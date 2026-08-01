@@ -9,9 +9,9 @@ class EmailPostForm(forms.Form):
     comments = forms.CharField(required=False,widget=forms.Textarea)
     
     
-# from .models import Comment, Post
-# @admin.register(Comment)
-# class CommentAdmin(admin.ModelAdmin):
-#         list_display = ['name', 'email', 'post', 'created', 'active']
-#         list_filter = ['active', 'created', 'updated']
-#         search_fields = ['name', 'email', 'body']
+from .models import Comment
+
+class CommentForm(forms.ModelForm):
+    class Meta:
+        model = Comment
+        fields = ['name', 'email', 'body']

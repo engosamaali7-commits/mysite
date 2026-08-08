@@ -23,6 +23,8 @@ class Post(models.Model):
     updated = models.DateTimeField(auto_now=True) # لحظة آخر تعديل
     status = models.CharField(max_length=2, choices=Status.choices, default=Status.DRAFT)
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='blog_posts')
+    image = models.ImageField(upload_to='images/%Y/%m/%d/',null = True, blank = True)
+    
     
     objects = models.Manager() # The default manager.
     published = PublishedManager() # Our custom manager.
